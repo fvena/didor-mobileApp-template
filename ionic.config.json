@@ -1,0 +1,7 @@
+{
+  "name": "daikin-usa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

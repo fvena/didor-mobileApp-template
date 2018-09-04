@@ -1,0 +1,24 @@
+.van-checkbox { position: relative; }
+
+.van-checkbox__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.van-checkbox__label {
+  @include fontsize(eta);
+  padding-left: 30px;
+  margin-left: 0;
+}
+
+.van-checkbox__icon,
+.van-checkbox__label {
+  vertical-align: top;
+  line-height: 20px;
+}
+
+.van-checkbox__icon--checked .van-icon {
+  border-color: brand();
+  background-color: brand();
+}

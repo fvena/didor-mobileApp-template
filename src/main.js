@@ -8,6 +8,7 @@ import i18n from './i18n';
 import cordovaLoader from './cordovaLoader';
 import './plugins/axios';
 import './plugins/vant';
+import './styles/didor.scss';
 
 
 Vue.config.productionTip = false;

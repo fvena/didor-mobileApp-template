@@ -1,19 +1,19 @@
 <template lang="pug">
   div
-    van-nav-bar(
-      title="Title"
-      left-text="Back"
-      right-text="Button"
-      left-arrow
-    )
-    router-link(to="/") Home |
-    router-link(to="/about") About
-    span(v-if="isLoggedIn")
-      | |
-      a(@click="logoutUser") Logout
+    //-
+      van-nav-bar(
+        title="Title"
+        left-text="Back"
+        right-text="Button"
+        left-arrow
+      )
+      router-link(to="/") Home |
+      router-link(to="/about") About
+      span(v-if="isLoggedIn")
+        | |
+        a(@click="logoutUser") Logout
 
-    <router-view></router-view>
-  </div>
+    router-view
 </template>
 
 <script>

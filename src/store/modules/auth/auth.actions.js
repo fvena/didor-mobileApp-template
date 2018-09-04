@@ -54,6 +54,14 @@ const register = ({ commit }, user) => new Promise((resolve, reject) => {
     });
 });
 
+
+const forgot = ({ commit }, user) => new Promise((resolve) => {
+  commit('AUTH_REQUEST');
+
+  resolve(user);
+});
+
+
 const logout = ({ commit }) => new Promise((resolve) => {
   commit('LOGOUT');
   localStorage.removeItem('token');
@@ -65,5 +73,6 @@ const logout = ({ commit }) => new Promise((resolve) => {
 export default {
   login,
   register,
+  forgot,
   logout,
 };

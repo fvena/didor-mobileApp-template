@@ -4,6 +4,9 @@ import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import Forgot from './views/Forgot.vue';
+import Privacy from './views/Privacy.vue';
+import TermUse from './views/TermUse.vue';
 
 import state from './store/modules/auth/auth.state';
 
@@ -25,6 +28,21 @@ const router = new Router({
       path: '/register',
       name: 'register',
       component: Register,
+    },
+    {
+      path: '/forgot',
+      name: 'forgot',
+      component: Forgot,
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: Privacy,
+    },
+    {
+      path: '/termUse',
+      name: 'termUse',
+      component: TermUse,
     },
     {
       path: '/about',

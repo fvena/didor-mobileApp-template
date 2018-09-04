@@ -1,22 +1,21 @@
 <template lang="pug">
-  div
-    h1 Sign in {{ status }}
+  .auth
+    img.auth__logo(alt="Vue logo" src="../assets/logo.svg")
 
-    form.login(@submit.prevent="loginUser")
-      label(for="mail") Email
+    form.auth__form(@submit.prevent="loginUser")
       input(required v-model="mail" type="email" placeholder="Email")
-
-      label(for="password") Password
       input(required v-model="password" type="password" placeholder="Password")
+      .auth__error(v-if="error") {{ error }}
 
-      hr
+      van-button(size="large" type="primary" :loading="status === 'success'") Sign In
 
-      button(type="submit") Login
+    hr.auth__hr
 
-    | {{ error }}
-
-    router-link(to="/register") Registrar |
-    router-link(to="/remember") Recordar |
+    van-row
+      van-col(span="12")
+        router-link.auth__link(to="/forgot") Forgot password?
+      van-col(span="12")
+        router-link.auth__link(to="/register") New here? Sign Up
 </template>
 
 <script>
@@ -25,8 +24,8 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
-      mail: 'fvena@altracorporacion.es',
-      password: 'password',
+      mail: '',
+      password: '',
       error: '',
     };
   },
@@ -64,3 +63,9 @@ export default {
   },
 };
 </script>
+
+<style  lang="scss" scoped>
+  h1 {
+    color: brand();
+  }
+</style>

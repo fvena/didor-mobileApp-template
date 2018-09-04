@@ -1,0 +1,53 @@
+// authentication layout
+.auth {
+  padding: $space;
+
+  .van-col { text-align: center; }
+}
+
+
+.auth__logo {
+  display: block;
+  margin: double($space) auto double($space);
+  width: 5rem;
+}
+
+.auth__form {
+  input[type=text],
+  input[type=email],
+  input[type=password] {
+    display: block;
+    margin-bottom: 0;
+    width: 100%;
+    height: double($space);
+    line-height: double($space);
+    padding: 0 halve($space);
+
+    &:not(:first-of-type) {
+      border-top: none;
+    }
+  }
+
+  button {
+    margin-top: double($space);
+  }
+}
+
+
+.auth__error {
+  @include fontsize(eta);
+  margin-top: halve($space);
+  padding: 0 halve($space);
+}
+
+
+.auth__hr {
+  margin: 0 auto;
+  width: 20%;
+  padding: $space;
+}
+
+.auth__link {
+  color: gray(gray1);
+  text-decoration: underline;
+}

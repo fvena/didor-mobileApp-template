@@ -1,0 +1,8 @@
+.van-button {
+  @include fontsize(zeta);
+}
+
+.van-button--primary{
+  background-color: brand();
+  border: 1px solid brand();
+}

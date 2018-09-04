@@ -1,30 +1,28 @@
 <template lang="pug">
-  div
-    h1 Register {{ status }}
-    form(@submit.prevent="registerUser")
-      label(for="name") Name
-      input(id="name" type="text" v-model="name" required autofocus)
+  .auth
+    img.auth__logo(alt="Vue logo" src="../assets/logo.svg")
 
-      label(for="lastName") Last Name
-      input(id="lastName" type="text" v-model="lastName" required)
+    form.auth__form(@submit.prevent="registerUser")
+      input(id="name" type="text" v-model="name" placeholder="First Name" required autofocus)
+      input(id="lastName" type="text" v-model="lastName" placeholder="Last Name" required)
+      input(id="mail" type="email" v-model="mail" placeholder="Email" required)
+      input(id="password" type="password" v-model="password" placeholder="Password" required)
+      .auth__error(v-if="error") {{ error }}
 
-      label(for="email") E-Mail Address
-      input(id="mail" type="email" v-model="mail" required)
+      van-checkbox.margin-top(v-model="toc" shape="square")
+        | I accept the
+        router-link(to="termUse")  Terms of Use
+        |  and the
+        router-link(to="privacy")  Privacy Policy
+        | .
 
-      label(for="password") Password
-      input(id="password" type="password" v-model="password" required)
+      van-checkbox(v-model="commercial" shape="square")
+        | I authorize the DKN Plattform to email me.
 
-      label(for="toc") TOC
-      input(id="toc" type="checkbox" v-model="toc" required)
+      van-button(size="large" type="primary" :loading="status === 'success'") Register
 
-      label(for="commercial") Comercial
-      input(id="commercial" type="checkbox" v-model="commercial")
-
-      hr
-
-      button(type="submit") Register
-
-    | {{ error }}
+    .text--center.margin-top
+      router-link.auth__link(to="/login") Go to Login
 </template>
 
 <script>
@@ -33,11 +31,11 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
-      name: 'Juan',
-      lastName: 'Altra',
-      mail: 'juan@altracorporacion.es',
-      password: 'password',
-      toc: true,
+      name: '',
+      lastName: '',
+      mail: '',
+      password: '',
+      toc: false,
       commercial: false,
       error: '',
     };

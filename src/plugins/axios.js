@@ -2,9 +2,19 @@ import Vue from 'vue';
 import axios from 'axios';
 
 // Full config:  https://github.com/axios/axios#request-config
-// axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.baseURL = process.env.VUE_APP_API_URL || '';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post.Accept = 'application/json';
+
+
+Vue.prototype.$http = axios;
+
+// If user active session, get token
+const token = localStorage.getItem('token');
+if (token) {
+  Vue.prototype.$http.defaults.headers.common.Authorization = token;
+}
+
 
 const configAxios = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""

@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "commit": "git-cz",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "cordova-serve": "vue-cli-service cordova-serve",
-    "cordova-build": "vue-cli-service build --dest www"
+    "cordova-build": "vue-cli-service build --dest www",
+    "release": "standard-version"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -38,9 +40,12 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "commitizen": "2.10.1",
+    "cz-conventional-changelog": "2.1.0",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "standard-version": "4.4.0",
     "vue-cli-plugin-axios": "^0.0.4",
     "vue-cli-plugin-cordova": "^1.0.0-beta.7",
     "vue-cli-plugin-i18n": "^0.5.0",
@@ -73,5 +78,10 @@
       "browser",
       "ios"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }

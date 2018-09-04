@@ -1,5 +1,16 @@
 <template>
-  <v-app>
+  <div>
+    <van-nav-bar
+      title="Title"
+      left-text="Back"
+      right-text="Button"
+      left-arrow
+    />
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-view></router-view>
+  </div>
+  <!-- <v-app>
     <v-navigation-drawer v-model="drawer" fixed app>
       <v-list dense>
         <v-list-tile @click="route('/')">
@@ -29,7 +40,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-  </v-app>
+  </v-app> -->
 </template>
 
 <script>

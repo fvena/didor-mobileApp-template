@@ -1,8 +1,7 @@
-import 'material-design-icons/iconfont/material-icons.css';
-import 'vuetify/dist/vuetify.css';
 import 'babel-polyfill';
+import 'vant/lib/vant-css/index.css';
 import Vue from 'vue';
-import vuetify from 'vuetify';
+import Vant from 'vant';
 import './plugins/axios';
 import App from './App.vue';
 import router from './router';
@@ -10,10 +9,10 @@ import store from './store';
 import i18n from './i18n';
 import cordovaLoader from './cordovaLoader';
 
+Vue.use(Vant);
+
 
 Vue.config.productionTip = false;
-
-Vue.use(vuetify);
 
 cordovaLoader(() => {
   new Vue({

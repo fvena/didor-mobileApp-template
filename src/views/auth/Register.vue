@@ -1,6 +1,6 @@
 <template lang="pug">
   .auth
-    img.auth__logo(alt="Vue logo" src="../assets/logo.svg")
+    img.auth__logo(alt="Vue logo" src="@/assets/logo.svg")
 
     form.auth__form(@submit.prevent="registerUser")
       input(id="name" type="text" v-model="name" placeholder="First Name" required autofocus)

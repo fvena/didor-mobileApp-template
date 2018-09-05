@@ -1,6 +1,6 @@
 <template lang="pug">
 .auth
-  img.auth__logo(alt="Vue logo" src="../assets/logo.svg")
+  img.auth__logo(alt="Vue logo" src="@/assets/logo.svg")
 
   form.auth__form(@submit.prevent="forgotUser")
     input(required v-model="mail" type="email" placeholder="Email")

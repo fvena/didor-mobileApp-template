@@ -1,12 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
+// Auth vies
+import Login from './views/auth/Login.vue';
+import Register from './views/auth/Register.vue';
+import Forgot from './views/auth/Forgot.vue';
+import Logout from './views/auth/Logout.vue';
+import Privacy from './views/auth/Privacy.vue';
+import TermUse from './views/auth/TermUse.vue';
+
+// Views
 import Home from './views/Home.vue';
 import About from './views/About.vue';
-import Login from './views/Login.vue';
-import Register from './views/Register.vue';
-import Forgot from './views/Forgot.vue';
-import Privacy from './views/Privacy.vue';
-import TermUse from './views/TermUse.vue';
 
 import state from './store/modules/auth/auth.state';
 
@@ -18,6 +23,9 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/login',
@@ -33,6 +41,11 @@ const router = new Router({
       path: '/forgot',
       name: 'forgot',
       component: Forgot,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout,
     },
     {
       path: '/privacy',

@@ -1,5 +1,24 @@
 <template lang="pug">
-  .about
-    h1 This is an about page 2
-    h2 {{ $t("message") }}
+  div
+    Sidenav
+      router-link(to="/") Home
+      router-link(to="/about") About
+      router-link(to="/logout") Logout
+
+    van-nav-bar(
+      title="Title"
+    )
+
+    .main
+      h1 About Page
 </template>
+
+<script>
+import Sidenav from '@/components/Sidenav.vue';
+
+export default {
+  components: {
+    Sidenav,
+  },
+};
+</script>

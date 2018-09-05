@@ -14,7 +14,7 @@ export default Vue.extend({
     logoutUser() {
       this.logout()
         .then(() => {
-          this.$router.push('/login');
+          this.$router.push('/auth/login');
         });
     },
   },
@@ -25,7 +25,7 @@ export default Vue.extend({
       if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
         this.logout()
           .then(() => {
-            this.$router.push('/login');
+            this.$router.push('/auth/login');
           });
       }
       throw err;

@@ -1,17 +1,15 @@
 <template lang="pug">
-.auth
-  img.auth__logo(alt="Vue logo" src="@/assets/logo.svg")
+  .auth--forgot
+    form.auth__form(@submit.prevent="forgotUser")
+      input(required v-model="mail" type="email" placeholder="Email")
+      .auth__error(v-if="error") {{ error }}
 
-  form.auth__form(@submit.prevent="forgotUser")
-    input(required v-model="mail" type="email" placeholder="Email")
-    .auth__error(v-if="error") {{ error }}
+      van-button(size="large" type="primary" :loading="status === 'success'") Send
 
-    van-button(size="large" type="primary" :loading="status === 'success'") Send
+    hr.auth__hr
 
-  hr.auth__hr
-
-  .text--center.margin-top
-    router-link.auth__link(to="/login") Go to Login
+    .text--center.margin-top
+      router-link.auth__link(to="/auth/login") Go to Login
 </template>
 
 <script>

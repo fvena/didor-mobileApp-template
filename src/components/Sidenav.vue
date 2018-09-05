@@ -3,7 +3,7 @@
     van-icon.sideNav__openBtn(name="wap-nav" @click="openMenu" v-if="isOpenBtn")
 
     .sideNav__bar
-      nav.sideNav__list
+      nav.sideNav__list(ref="sideNavList" @click="closeMenu")
         slot
 
       van-icon.sideNav__closeBtn(name="clear" @click="closeMenu")
@@ -69,6 +69,7 @@ export default {
     },
 
     closeMenu() {
+      console.log('close Menu');
       this.isOpen = false;
       // document.body.className = document.body.className.replace(
       //   ' body--sideNavOpen',
@@ -100,6 +101,8 @@ export default {
     if (!this.disableEsc) {
       document.addEventListener('keyup', this.closeMenuOnEsc);
     }
+
+    // this.$refs.sideNavList.addEventListener('click', this.closeMenu());
   },
 
   destroyed() {

@@ -1,10 +1,5 @@
 <template lang="pug">
   div
-    Sidenav
-      router-link(to="/") Home
-      router-link(to="/about") About
-      router-link(to="/logout") Logout
-
     van-nav-bar(
       title="Title"
     )
@@ -14,11 +9,7 @@
 </template>
 
 <script>
-import Sidenav from '@/components/Sidenav.vue';
-
 export default {
-  components: {
-    Sidenav,
-  },
+
 };
 </script>

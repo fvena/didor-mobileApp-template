@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 // Auth vies
+import Auth from './views/auth/Auth.vue';
 import Login from './views/auth/Login.vue';
 import Register from './views/auth/Register.vue';
 import Forgot from './views/auth/Forgot.vue';
@@ -10,6 +11,7 @@ import Privacy from './views/auth/Privacy.vue';
 import TermUse from './views/auth/TermUse.vue';
 
 // Views
+import Main from './views/Main.vue';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 
@@ -21,31 +23,38 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: true,
+      redirect: {
+        name: 'home',
       },
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login,
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: Register,
-    },
-    {
-      path: '/forgot',
-      name: 'forgot',
-      component: Forgot,
-    },
-    {
-      path: '/logout',
-      name: 'logout',
-      component: Logout,
+      path: '/auth',
+      component: Auth,
+      redirect: {
+        name: 'login',
+      },
+      children: [
+        {
+          path: 'login',
+          name: 'login',
+          component: Login,
+        },
+        {
+          path: 'register',
+          name: 'register',
+          component: Register,
+        },
+        {
+          path: 'forgot',
+          name: 'forgot',
+          component: Forgot,
+        },
+        {
+          path: 'logout',
+          name: 'logout',
+          component: Logout,
+        },
+      ],
     },
     {
       path: '/privacy',
@@ -57,13 +66,29 @@ const router = new Router({
       name: 'termUse',
       component: TermUse,
     },
+
+    // Authenticate routes
     {
-      path: '/about',
-      name: 'about',
-      component: About,
+      path: '/main',
+      component: Main,
+      redirect: {
+        name: 'home',
+      },
       meta: {
         requiresAuth: true,
       },
+      children: [
+        {
+          path: 'home',
+          name: 'home',
+          component: Home,
+        },
+        {
+          path: 'about',
+          name: 'about',
+          component: About,
+        },
+      ],
     },
   ],
 });
@@ -74,7 +99,7 @@ router.beforeEach((to, from, next) => {
       next();
       return;
     }
-    next('/login');
+    next('/auth/login');
   } else {
     next();
   }

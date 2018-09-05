@@ -1,7 +1,5 @@
 <template lang="pug">
-  .auth
-    img.auth__logo(alt="Vue logo" src="@/assets/logo.svg")
-
+  .auth--register
     form.auth__form(@submit.prevent="registerUser")
       input(id="name" type="text" v-model="name" placeholder="First Name" required autofocus)
       input(id="lastName" type="text" v-model="lastName" placeholder="Last Name" required)
@@ -22,7 +20,7 @@
       van-button(size="large" type="primary" :loading="status === 'success'") Register
 
     .text--center.margin-top
-      router-link.auth__link(to="/login") Go to Login
+      router-link.auth__link(to="/auth/login") Go to Login
 </template>
 
 <script>
@@ -65,7 +63,7 @@ export default {
       this.register(data)
         .then(() => {
           console.log('success register');
-          this.$router.push('/login');
+          this.$router.push('/auth/login');
         })
         .catch((error) => {
           console.log(error);

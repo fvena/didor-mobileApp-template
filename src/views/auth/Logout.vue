@@ -1,11 +1,9 @@
 <template lang="pug">
-  .auth
-    img.auth__logo(alt="Vue logo" src="@/assets/logo.svg")
-
+  .auth--logout
     h3.text--center Your logout success
 
     .text--center.margin-top
-      router-link.auth__link(to="/login") Go to Login
+      router-link.auth__link(to="/auth/login") Go to Login
 </template>
 
 <script>

@@ -1,21 +1,23 @@
 <template lang="pug">
-  .auth
-    img.auth__logo(alt="Vue logo" src="@/assets/logo.svg")
-
+  .auth--login
     form.auth__form(@submit.prevent="loginUser")
       input(required v-model="mail" type="email" placeholder="Email")
       input(required v-model="password" type="password" placeholder="Password")
       .auth__error(v-if="error") {{ error }}
 
-      van-button(size="large" type="primary" :loading="status === 'success'") Sign In
+      van-button(
+        size="large"
+        type="primary"
+        :loading="status === 'success'"
+        native-type="submit") Sign In
 
     hr.auth__hr
 
     van-row
       van-col(span="12")
-        router-link.auth__link(to="/forgot") Forgot password?
+        router-link.auth__link(to="/auth/forgot") Forgot password?
       van-col(span="12")
-        router-link.auth__link(to="/register") New here? Sign Up
+        router-link.auth__link(to="/auth/register") New here? Sign Up
 </template>
 
 <script>
@@ -63,9 +65,3 @@ export default {
   },
 };
 </script>
-
-<style  lang="scss" scoped>
-  h1 {
-    color: brand();
-  }
-</style>

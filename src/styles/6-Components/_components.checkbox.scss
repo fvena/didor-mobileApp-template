@@ -1,0 +1,115 @@
+/*
+ * <label class="container">One
+ *   <input type="checkbox" checked="checked">
+ *   <span class="checkmark"></span>
+ * </label>
+ */
+
+ /*
+  * <div class="checkbox">
+  *   <input type="checkbox" checked="checked" name="accept">
+  *   <label for="accept">One</label>
+  * </label>
+  */
+
+/*
+ * The container
+ */
+.checkbox {
+  position: relative;
+}
+
+
+/*
+ * Hide the browser's default checkbox
+ */
+.checkbox input {
+  position: absolute;
+  top: quarter(-$space);
+  left: quarter(-$space);
+  width: $space * 1.5;
+  height: $space * 1.5;
+  margin: 0;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+
+/*
+ * Label Style
+ */
+.checkbox label {
+  @include fontsize(eta);
+  position: relative;
+  padding-left: calc(#{$space} + #{halve($space)});
+  outline: none;
+  margin-bottom: 0;
+}
+
+
+/*
+ * Checkbox aspect
+ */
+.checkbox label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $space;
+  height: $space;
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+  outline: 0;
+  background-color: white;
+  transition: all .2s;
+}
+
+
+/*
+ * Checked mark aspect
+ */
+.checkbox label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  width: 9px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  transition: all .2s;
+  opacity: 0;
+}
+
+
+/*
+ * Checked mark aspect changes
+ */
+.checkbox input:checked + label:before {
+  background-color: brand();
+  border-color: brand();
+}
+
+.checkbox input:checked + label:after {
+  opacity: 1;
+}
+
+.checkbox input:not(:checked) + label:after {
+  opacity: 0;
+}
+
+
+/*
+ * Error state
+ */
+.checkbox input.error:not(:checked) + label:before {
+  border-color: notify(danger);
+}
+
+.checkbox input.error:checked + label:before {
+  background-color: notify(danger);
+  border-color: notify(danger);
+}

@@ -1,14 +1,29 @@
 <template lang="pug">
   .auth--login
     form.auth__form(@submit.prevent="loginUser")
-      input(required v-model="mail" type="email" placeholder="Email")
-      input(required v-model="password" type="password" placeholder="Password")
-      .auth__error(v-if="error") {{ error }}
+      input(
+        type="email"
+        name="email"
+        v-model="mail"
+        v-validate="'required|email'"
+        :class="{'error': errors.has('email') }"
+        placeholder="Email")
+      input(
+        type="password"
+        name="password"
+        v-model="password"
+        v-validate="'required'"
+        :class="{'error': errors.has('password') }"
+        placeholder="Password")
+
+      .margin-halve-top
+        .auth__error(v-show="errors.has('email')") {{ errors.first('email') }}
+        .auth__error(v-show="errors.has('password')") {{ errors.first('password') }}
+        .auth__error(v-show="error") {{ error }}
 
       van-button(
         size="large"
         type="primary"
-        :loading="status === 'success'"
         native-type="submit") Sign In
 
     hr.auth__hr
@@ -42,25 +57,38 @@ export default {
     }),
 
     loginUser() {
-      const user = {
-        mail: this.mail,
-        password: this.password,
-      };
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.$toast.loading({ duration: 0, mask: true, message: 'Cargando...' });
+          this.error = '';
 
-      this.error = '';
-      this.login(user)
-        .then(() => this.$router.push('/'))
-        .catch((error) => {
-          // eslint-disable-next-line
-          switch (error['_id']) {
-            case 'userNotExist':
-              this.error = 'No existe ningún usuario registrado con esos datos';
-              break;
-            default:
-              console.log(error);
-              this.error = 'Lo sentimos, ocurrió un error, inténtelo más tarde';
-          }
-        });
+          const user = {
+            mail: this.mail,
+            password: this.password,
+          };
+
+          this.login(user)
+            .then(() => {
+              this.$toast.clear();
+              this.$router.push('/');
+            })
+            .catch((error) => {
+              this.$toast.clear();
+
+              switch (error['_id']) { // eslint-disable-line
+                case 'userNotExist':
+                  this.error = 'No existe ningún usuario registrado con esos datos';
+                  break;
+                default:
+                  console.log(error);
+                  this.$dialog.alert({
+                    title: 'Error!',
+                    message: 'Lo sentimos, ocurrió un error, inténtelo más tarde.',
+                  });
+              }
+            });
+        }
+      });
     },
   },
 };

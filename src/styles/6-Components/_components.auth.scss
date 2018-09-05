@@ -26,6 +26,10 @@
     &:not(:first-of-type) {
       border-top: none;
     }
+
+    &.error {
+      border-color: notify(danger);
+    }
   }
 
   button {
@@ -36,7 +40,8 @@
 
 .auth__error {
   @include fontsize(eta);
-  margin-top: halve($space);
+  color: notify(danger);
+  line-height: 1rem;
   padding: 0 halve($space);
 }
 

@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 
 import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -10,6 +11,7 @@ import './plugins/axios';
 import './plugins/vant';
 import './styles/didor.scss';
 
+Vue.use(VeeValidate);
 
 Vue.config.productionTip = false;
 

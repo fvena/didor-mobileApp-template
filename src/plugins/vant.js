@@ -4,8 +4,9 @@ import {
   Button,
   Row,
   Col,
-  Checkbox,
   Icon,
+  Toast,
+  Dialog,
 } from 'vant';
 
 import 'vant/lib/vant-css/base.css';
@@ -13,13 +14,17 @@ import 'vant/lib/vant-css/nav-bar.css';
 import 'vant/lib/vant-css/button.css';
 import 'vant/lib/vant-css/row.css';
 import 'vant/lib/vant-css/col.css';
-import 'vant/lib/vant-css/checkbox.css';
 import 'vant/lib/vant-css/icon.css';
+import 'vant/lib/vant-css/toast.css';
+import 'vant/lib/vant-css/dialog.css';
+
+import 'vant/lib/vant-css/popup.css';
 
 
 Vue.use(NavBar);
 Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
-Vue.use(Checkbox);
 Vue.use(Icon);
+Vue.use(Toast);
+Vue.use(Dialog);

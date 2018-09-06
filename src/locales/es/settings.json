@@ -1,0 +1,14 @@
+{
+  "title": "Ajustes Generales",
+  "general": "General",
+  "language": "Idioma",
+  "units": "Unidades",
+  "unitsName": {
+    "C": "Centígrado",
+    "F": "Fahrenheit"
+  },
+  "about": "Acerca de",
+  "appVersion": "Versión de la aplicaicón",
+  "remoteAssist": "Asistencia remota",
+  "enabled": "Permitir"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "General Settings",
+  "general": "General",
+  "language": "Language App",
+  "units": "Temperature Units",
+  "unitsName": {
+    "C": "Celsius",
+    "F": "Fahrenheit"
+  },
+  "about": "About",
+  "appVersion": "Application version",
+  "remoteAssist": "Remote Assistance",
+  "enabled": "Enabled"
+}

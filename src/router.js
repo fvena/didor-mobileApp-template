@@ -7,13 +7,13 @@ import Login from './views/auth/Login.vue';
 import Register from './views/auth/Register.vue';
 import Forgot from './views/auth/Forgot.vue';
 import Logout from './views/auth/Logout.vue';
-import Privacy from './views/auth/Privacy.vue';
-import TermUse from './views/auth/TermUse.vue';
+import Docs from './views/auth/Docs.vue';
 
 // Views
 import Main from './views/Main.vue';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
+import Settings from './views/Settings.vue';
 
 import state from './store/modules/auth/auth.state';
 
@@ -26,6 +26,11 @@ const router = new Router({
       redirect: {
         name: 'home',
       },
+    },
+    {
+      path: '/docs/:type',
+      name: 'docs',
+      component: Docs,
     },
     {
       path: '/auth',
@@ -56,16 +61,6 @@ const router = new Router({
         },
       ],
     },
-    {
-      path: '/privacy',
-      name: 'privacy',
-      component: Privacy,
-    },
-    {
-      path: '/termUse',
-      name: 'termUse',
-      component: TermUse,
-    },
 
     // Authenticate routes
     {
@@ -87,6 +82,11 @@ const router = new Router({
           path: 'about',
           name: 'about',
           component: About,
+        },
+        {
+          path: 'settings',
+          name: 'settings',
+          component: Settings,
         },
       ],
     },

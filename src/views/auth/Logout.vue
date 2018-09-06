@@ -1,9 +1,9 @@
 <template lang="pug">
   .auth--logout
-    h3.text--center Your logout success
+    h3.text--center {{ $t('auth.messages.logout') }}
 
     .text--center.margin-top
-      router-link.auth__link(to="/auth/login") Go to Login
+      router-link.auth__link(to="/auth/login") {{ $t('auth.goToLogin') }}
 </template>
 
 <script>

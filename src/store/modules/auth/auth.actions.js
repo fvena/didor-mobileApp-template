@@ -7,25 +7,25 @@ const login = ({ commit }, user) => new Promise((resolve, reject) => {
   axios({ url: 'auth/login', data: user, method: 'POST' })
     .then((resp) => {
       // Get user data
-      const { token, data: userData, _id: mail } = resp.data;
+      const { token, data: userData } = resp.data;
       const { units, language } = resp.data.scope.dknUsa;
 
-      userData.mail = mail;
       userData.language = language;
       userData.units = units;
 
       // Store data
-      localStorage.setItem('token', token);
-      axios.defaults.headers.common.Authorization = token;
-      commit('AUTH_SUCCESS', token, userData);
+      localStorage.setItem('token', `Bearer ${token}`);
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      commit('AUTH_SUCCESS', `Bearer ${token}`, userData);
 
       // Return success
-      resolve(resp);
+      resolve(userData);
     })
     .catch((error) => {
+      console.log(error);
       commit('AUTH_ERROR');
       localStorage.removeItem('token');
-      reject(error.response.data);
+      reject(error);
     });
 });
 
@@ -35,22 +35,12 @@ const register = ({ commit }, user) => new Promise((resolve, reject) => {
 
   axios({ url: 'auth/signup/dknUsa', data: user, method: 'POST' })
     .then((resp) => {
-      // Get user data
-      // console.log(resp);
-      // const { token, userData } = resp.data.token;
-
-      // Store data
-      // localStorage.setItem('token', token);
-      // axios.defaults.headers.common.Authorization = token;
-      // commit('AUTH_SUCCESS', token, userData);
-
-      // Return success
       resolve(resp.data);
     })
     .catch((error) => {
       commit('AUTH_ERROR');
       localStorage.removeItem('token');
-      reject(error.response.data);
+      reject(error);
     });
 });
 
@@ -70,9 +60,33 @@ const logout = ({ commit }) => new Promise((resolve) => {
 });
 
 
+const getUser = ({ commit }) => new Promise((resolve, reject) => {
+  axios({ url: 'users/isLoggedIn', method: 'GET' })
+    .then((resp) => {
+      // Get user data
+      const { data: userData } = resp.data;
+      const { units, language } = resp.data.scope.dknUsa;
+
+      userData.language = language;
+      userData.units = units;
+
+      // Store data
+      commit('AUTH_USER', userData);
+
+      // Return success
+      resolve(userData);
+    })
+    .catch((error) => {
+      commit('AUTH_ERROR');
+      reject(error);
+    });
+});
+
+
 export default {
   login,
   register,
   forgot,
   logout,
+  getUser,
 };

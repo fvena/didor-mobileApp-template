@@ -17,9 +17,14 @@ const LOGOUT = (state) => {
   state.token = '';
 };
 
+const AUTH_USER = (state, user) => {
+  state.user = user;
+};
+
 export default {
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
   LOGOUT,
+  AUTH_USER,
 };

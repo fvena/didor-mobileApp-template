@@ -1,4 +1,4 @@
 <template lang="pug">
   .docs
-    h1 Privacy
+    h1 Privacidad Español
 </template>

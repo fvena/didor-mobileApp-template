@@ -7,6 +7,9 @@
     .main
       h1 Home Page
 
+      div {{ $t("messages.hello") }}
+      div {{ $t("installations.name") }}
+
       | Unit {{ unit }}
 </template>
 

@@ -1,15 +1,27 @@
 <template lang="pug">
   .auth--forgot
     form.auth__form(@submit.prevent="forgotUser")
-      input(required v-model="mail" type="email" placeholder="Email")
-      .auth__error(v-if="error") {{ error }}
+      input(
+        type="email"
+        name="email"
+        v-model="email"
+        v-validate="'required|email'"
+        :data-vv-as="$t('auth.email')"
+        :class="{'error': errors.has('email') }"
+        :placeholder="$t('auth.email')")
 
-      van-button(size="large" type="primary" :loading="status === 'success'") Send
+      .margin-halve-top
+        .auth__error(v-show="errors.has('email')") {{ errors.first('email') }}
+
+      van-button(
+        size="large"
+        type="primary"
+        native-type="submit") {{ $t('auth.send')}}
 
     hr.auth__hr
 
     .text--center.margin-top
-      router-link.auth__link(to="/auth/login") Go to Login
+      router-link.auth__link(to="/auth/login") {{ $t('auth.goToLogin')}}
 </template>
 
 <script>

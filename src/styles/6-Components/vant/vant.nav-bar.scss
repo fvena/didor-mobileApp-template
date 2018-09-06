@@ -1,0 +1,10 @@
+.van-nav-bar {
+  background-color: gray(gray5);
+}
+
+.van-nav-bar__title {
+  @include fontsize(epsilon);
+  color: gray(gray1);
+  font-weight: font($body-type,bold);
+  line-height: inherit;
+}

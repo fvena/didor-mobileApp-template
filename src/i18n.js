@@ -9,8 +9,13 @@ function loadLocaleMessages() {
   locales.keys().forEach((key) => {
     const matched = key.match(/([a-z0-9]+)\./i);
     if (matched && matched.length > 1) {
-      const locale = matched[1];
-      messages[locale] = locales(key);
+      const split = matched.input.split('/');
+      const locale = split[1];
+      const section = matched[1];
+      if (!messages[locale]) {
+        messages[locale] = {};
+      }
+      messages[locale][section] = locales(key);
     }
   });
 
@@ -18,7 +23,7 @@ function loadLocaleMessages() {
 }
 
 export default new VueI18n({
-  locale: process.env.VUE_APP_I18N_LOCALE || 'en',
+  locale: localStorage.getItem('language') || navigator.language || process.env.VUE_APP_I18N_LOCALE || 'en',
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages(),
 });

@@ -1,4 +1,4 @@
 <template lang="pug">
   .docs
-    h1 Terms of Use
+    h1 Privacy English
 </template>

@@ -1,0 +1,17 @@
+.van-cell-group__title {
+  @include fontsize(theta);
+  color: gray(gray2);
+  padding: 0 halve($space);
+  height: 1.5 * $space;
+  line-height: 1.5 * $space;
+}
+
+.van-cell {
+  @include fontsize(zeta);
+  padding: 14px 15px;
+}
+
+.van-cell--clickable {
+  .van-cell__value,
+  .van-cell__right-icon { color: brand(); }
+}

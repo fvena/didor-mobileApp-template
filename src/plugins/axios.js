@@ -12,7 +12,7 @@ Vue.prototype.$http = axios;
 // If user active session, get token
 const token = localStorage.getItem('token');
 if (token) {
-  Vue.prototype.$http.defaults.headers.common.Authorization = token;
+  Vue.prototype.$http.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
 
